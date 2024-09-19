@@ -1,13 +1,29 @@
 
-def operação(matriz, valor):
-    #essa porra só ta tirando nota de 2 mesmo ele sendo as vezes maior que 10
-    i = 1
+def operação(matriz, valor, option):
+    #o loop esta retirando as notas de forma errada  
+    if option == '1':
+        print('vc escolheu 1\n')
+        valor -= 20
+        matriz[2][2] -= 1
+        matriz[3][2] += 1
+    elif option == '2':
+        print('vc escolheu 2\n')
+        valor -= 20
+        matriz[2][3] -= 2
+        matriz[3][3] += 1
+    elif option == '3':
+        print('voce escolheu 3\n')
+    else:
+        print('A opção inserida não existe.')
+        return
+
+    i = 0
     for i in range(6):
-        if valor >= matriz[1][i - 1]:
-            while valor >= matriz[1][i - 1]:
-                valor -= matriz[1][i - 1]
-                matriz[2][i - 1] -= 1
-                matriz[3][i - 1] += 1 
+        if valor >= matriz[1][i]:
+            while valor >= matriz[1][i]:
+                valor -= matriz[1][i]
+                matriz[2][i] -= 1
+                matriz[3][i] += 1 
     return matriz
 
 def carregar_notas(matriz):
@@ -19,10 +35,10 @@ def carregar_notas(matriz):
     
 def retirar_notas(matriz):
     total_caixa = 0
-    i = 1
-    while i <= 6:
-        total_caixa += matriz[1][i-1]
-        i +=1
+    i = 0
+    for i in range(6):
+        total_caixa = matriz[1][i] * 100
+        
 
 
     print('\nQuanto deseja retirar?\n')
@@ -40,38 +56,40 @@ def retirar_notas(matriz):
     
     option = input()
 
-    if option == '1':
-        print('')
-        valor -= 20
-        matriz[2][3] -= 1
-        matriz = operação(matriz, valor)  
+    matriz = operação(matriz, valor, option)  
 
-    elif option == '2':
-        print('')
-        valor -= 20
-        matriz[2][4] -= 2
-        matriz = operação(matriz, valor)
+    print('Voce vai receber:\n')
+    i = 0
+    for i in range(6):
+        if matriz[3][i] > 0:
+            print(f'{matriz[3][i]} nota(s) de {matriz[1][i]}')
+        
+    print(
+        '\nEsta de acordo?\n'
+        'Sim - Digite 1\n'
+        'Cancelar - Digite 2'
+    )
 
-    elif option == '3':
-        print('')
-        matriz = operação(matriz, valor)
+    option = input()
 
-    else:
-        print('A opção inserida não existe. Retornando ao menu')
+    if option == '2':
+        print('Retirada de notas sendo cancelada. Retorno ao menu.')
+        menu()
+    elif option != '1' and option != '2':
+        print('Opção invalida. Retorno ao menu')
         menu()
 
+    #perguntar se ta tudo ok ou se quer cancelar
     print(matriz)
     print('\n--Operação finalizada, retorno ao Menu.')
     return matriz
     
-def estatistica():
+def estatistica(matriz, value_estatist):
     return 'Obrigo por utlizar nossos serviços'
 
 
 def menu(cod_banco):
 
-#fazer uma matriz que guarda o banco, o valor das notas e a quantidade
-#depois outra matriz que pega as info dessa matriz e calcula a estatistica, cada coluna representando um banco
 #se o cliente for do banco Caixa as info de saque deles serão armazenadas na coluna caixa no final
     matriz = [ 
     ['Banco do Brasil', 'Santander', 'Itaú','Caixa'],
