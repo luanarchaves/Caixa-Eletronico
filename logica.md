@@ -1,10 +1,3 @@
-PROJETO CAIXA ELETRONICO EM PYTHON COM GUI (BIBLIOTECA: CUSTOMTKINTER)
-
-1 - Realizar todo a logica do caixa eletrônico em um arquivo python normal:
-
-2 - Trasformar a logica em um modulo, que sera chamado em uma função num outro arquivo que tenho a customtkinter
-
-
 LOGICA:
 
 
@@ -13,8 +6,7 @@ CAIXA ELETRÔNICO
 Menu Principal 
 1- Carregar Notas 
 2- Retirar Notas 
-3- Estatística
-4- Fim
+3- Fim
 
 1.1. Carregar a quantidade de notas em uma área da memória com 6 ocorrências.
 
@@ -35,8 +27,3 @@ Código: 1, 2, 3, 4
 3- Itaú
 4 - Caixa
 
-1.8. No final, exibir a estatística, separada por bancos, com:
-1.8.1. O maior e o menor valor sacado;
-1.8.2. A média dos saques;
-1.8.3. Valor total dos saques;
-1.8.4. Valor das sobras dos caixas.
